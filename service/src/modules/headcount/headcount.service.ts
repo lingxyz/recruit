@@ -33,4 +33,16 @@ export class HeadcountService {
       // throw new httpException: todo
     }
   }
+
+  // 删除1条需求
+  async deleteHeadcount(createHeadcountDto: CreateHeadcountDto) {
+    const headcount = new Headcount();
+    headcount.id = createHeadcountDto.id;
+    try {
+        await this.headcountRepository.delete(headcount)
+        return '删除成功';
+    } catch (error) {
+      // throw new httpException: todo
+    }
+  }
 }

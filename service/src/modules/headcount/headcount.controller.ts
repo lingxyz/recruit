@@ -14,5 +14,8 @@ export class HeadcountController {
   async setHeadcount(@Body() createHeadcountDto: CreateHeadcountDto) {
     return await this.headcountService.saveHeadcount(createHeadcountDto);
   }
-
+  @Post('/delete')
+  async deleteHeadcount(@Body() createHeadcountDto: CreateHeadcountDto) {
+    return await this.headcountService.deleteHeadcount(createHeadcountDto);
+  }
 }
