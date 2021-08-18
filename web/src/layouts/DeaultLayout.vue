@@ -3,7 +3,7 @@
  */
 <template lang="pug">
 el-container
-  el-header header
+  el-header 人才招聘系统
   el-container
     el-aside
       NavMenu
@@ -26,8 +26,10 @@ export default defineComponent({
 <style lang="stylus" scoped>
 .el-header
   height 6vh
-  background #ccc
+  line-height 6vh
   background #545c64
+  color #fff
+  font-size 28px
 .el-aside
   height 94vh
   width 150px
