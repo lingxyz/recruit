@@ -45,13 +45,13 @@ el-dialog(
       el-select(v-model='state.form.project' placeholder='请选择')
         el-option(v-for='item in state.projects' :key='item.value' :label='item.label' :value='item.value')
   span.dialog-footer(slot='footer')
-    el-button(@click='state.dialogVisible = false') 取 消
+    el-button(@click='handleClose()') 取 消
     el-button(type='primary' @click="onSubmit(state.form)") 确 定
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, getCurrentInstance, reactive, onMounted } from 'vue'
-import statusVue from './status.vue';
+import statusVue from './process.vue';
 
 export default defineComponent({
   name: 'Headcount',
@@ -123,6 +123,10 @@ export default defineComponent({
         alert(res.data.data)
       }
     }
+    const handleClose = async () => {
+      state.form = {};
+      state.dialogVisible = false;
+    }
     // form line action: edit、delete
     const handleEdit = async (index, row) => {
       state.dialogVisible = true
@@ -139,6 +143,7 @@ export default defineComponent({
     return {
       state,
       onSubmit,
+      handleClose,
       handleEdit,
       handleDelete
     }

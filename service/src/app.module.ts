@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Headcount } from './entities/headcount.entity';
 import { HeadcountModule } from './modules/headcount/headcount.module';
 import { LibraryModule } from './modules/library/library.module';
+import { ProcessModule } from './modules/process/process.module';
 
 @Module({
   imports: [
@@ -17,9 +18,11 @@ import { LibraryModule } from './modules/library/library.module';
       autoLoadEntities: true,
       // entities: ["dist/**/*.entity{.ts,.js}"],
       synchronize: true,
+      logging: true
     }),
     HeadcountModule,
     LibraryModule,
+    ProcessModule,
   ],
 })
 export class AppModule {}

@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
 
 const library = () => import('../pages/library.vue')
-const status = () => import('../pages/status.vue')
+const process = () => import('../pages/process.vue')
 const headcount = () => import('../pages/headcount.vue')
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/Library'
+    redirect: '/library'
   },
   {
     path: "/library",
@@ -15,9 +15,9 @@ const routes: RouteRecordRaw[] = [
     component: library
   },
   {
-    path: "/status",
-    name: "status",
-    component: status
+    path: "/process",
+    name: "process",
+    component: process
   },
   {
     path: "/headcount",

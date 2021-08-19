@@ -17,7 +17,7 @@ el-tabs(v-model='activeName' @tab-click='handleClick')
 import {defineComponent, ref} from 'vue'
 
 export default defineComponent ({
-  name: 'status',
+  name: 'process',
   setup() {
     const handleClick = (tab, event) => {
       console.log(tab, event);

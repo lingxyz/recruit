@@ -13,14 +13,16 @@ export class LibraryService {
   ) {}
   // 获取候选人列表
   getLibrary(): Promise<Library[]> {
+    // todo: fixbug 连表查询默认返回第一行
     return this.libraryRepository.createQueryBuilder()
-      .leftJoinAndSelect(Headcount, 'headcount', 'headcount.id = library.hc_id')
+      .leftJoinAndSelect(Headcount, 'headcount', 'headcount.id = library.hcId')
       .select(`
         library.createAt as createAt,
-        library.hc_id as hc_id,
+        library.hcId as hcId,
         library.id as id,
         library.name as name,
-        library.process as process,
+        library.result as result,
+        library.evaluate as evaluate,
         headcount.head as head,
         headcount.level as level,
         headcount.post as post,
@@ -34,8 +36,9 @@ export class LibraryService {
   async saveLibrary(createLibraryDto: CreateLibraryDto) {
     const library = new Library();
     library.name = createLibraryDto.name;
-    library.hc_id = createLibraryDto.hc_id;
-    library.process = createLibraryDto.process;
+    library.hcId = createLibraryDto.hcId;
+    library.result = createLibraryDto.result;
+    library.evaluate = createLibraryDto.evaluate;
     try {
       if (createLibraryDto.id) {
         await this.libraryRepository.update(createLibraryDto.id, library)

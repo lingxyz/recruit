@@ -1,6 +1,7 @@
 export class CreateLibraryDto {
   readonly id: number;
   readonly name: string;
-  readonly hc_id: number;
-  readonly process: number;
+  readonly hcId: number;
+  readonly result: number;
+  readonly evaluate: string;
 }

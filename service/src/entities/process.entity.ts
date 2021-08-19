@@ -1,18 +1,17 @@
+// 面试记录
+
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
 
 @Entity()
-export class Library {
+export class Process {
   @PrimaryGeneratedColumn()
   id: number;
-  // 姓名
+  // 候选人id
   @Column()
-  name: string;
-  // 需求id
-  @Column()
-  hcId: number;
-  // 面试结果：-1淘汰 0 流程中 1录用
+  candidateId: number;
+  // 阶段：0 新建 1 一轮 2 二轮 3 三轮 4 四轮 5 offer 6 入职
   @Column({ default: 0 })
-  result: number;
+  process: number;
   // 评价
   @Column({ default: '' })
   evaluate: string;
